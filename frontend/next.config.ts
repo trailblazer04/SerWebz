@@ -26,6 +26,10 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'leo-francis-portfolio.vercel.app',
+      },
     ],
   },
 }

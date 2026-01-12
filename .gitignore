@@ -8,7 +8,7 @@ frontend/.next/
 frontend/out/
 frontend/build/
 frontend/dist/
-frontend/public/*.svg
+#frontend/public/*.svg
 
 # --- Backend Build Output ---
 backend/dist/
