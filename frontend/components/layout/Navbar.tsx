@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
@@ -25,10 +26,22 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo - Clickable to Home */}
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="text-2xl font-bold">
+            {/* Option 1: Use actual logo image */}
+            <div className="relative w-40 h-10">
+              <Image
+                src="/SerWebz-log.png"
+                alt="SerWebz - Crafting Digital Success"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            
+            {/* Option 2: If you don't have logo yet, use styled text (REMOVE IF YOU HAVE LOGO) */}
+            {/* <div className="text-2xl font-bold">
               <span className="text-navy-900">Ser</span>
               <span className="bg-gradient-to-r from-coral-500 to-pink-500 bg-clip-text text-transparent">Webz</span>
-            </div>
+            </div> */}
           </Link>
 
           {/* Desktop Navigation */}
