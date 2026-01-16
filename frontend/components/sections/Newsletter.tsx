@@ -44,7 +44,7 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900">
+    <section id="newsletter" className="py-24 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
