@@ -1,15 +1,18 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
+import Link from 'next/link'
+import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
-import { Check } from 'lucide-react'
+import { Check, Globe, ShoppingCart, Sparkles } from 'lucide-react'
 
 const services = [
   {
-    name: 'Basic Website',
-    price: '₹15,000',
+    icon: Globe,
+    title: 'Basic Website',
     description: 'Perfect for small businesses getting started online',
+    price: '₹15,000',
+    priceNote: 'One-time payment',
     features: [
       '5-page professional website',
       'Mobile responsive design',
@@ -18,12 +21,16 @@ const services = [
       'Basic SEO optimization',
       '1 month support',
     ],
-    popular: false,
+    link: '/services/website-development',  // ADD THIS
+    buttonText: 'Get Started',
   },
   {
-    name: 'Business Website',
-    price: '₹30,000',
+    icon: Sparkles,
+    title: 'Business Website',
     description: 'Ideal for established businesses looking to grow',
+    price: '₹30,000',
+    priceNote: 'One-time payment',
+    popular: true,
     features: [
       'Everything in Basic +',
       'Up to 10+ pages',
@@ -34,12 +41,15 @@ const services = [
       '3 months support',
       'Google My Business setup',
     ],
-    popular: true,
+    link: '/services/website-development',  // ADD THIS
+    buttonText: 'Get Started',
   },
   {
-    name: 'E-commerce',
-    price: '₹60,000',
+    icon: ShoppingCart,
+    title: 'E-commerce',
     description: 'Complete online store with payment gateway',
+    price: '₹60,000',
+    priceNote: 'One-time payment',
     features: [
       'Everything in Business +',
       'Online store setup',
@@ -49,7 +59,8 @@ const services = [
       'Inventory management',
       '6 months support',
     ],
-    popular: false,
+    link: '/services/ecommerce',  // ADD THIS
+    buttonText: 'Get Started',
   },
 ]
 
@@ -64,19 +75,17 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-2 rounded-full bg-coral-100 text-coral-600 font-semibold text-sm mb-4">
-            Our Services
-          </div>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          <Badge variant="coral" className="mb-4">Our Services</Badge>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 font-display">
             Choose Your Perfect Plan
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Transparent pricing with no hidden fees. All packages include modern design, 
-            mobile responsiveness, and ongoing support.
+            Transparent pricing with no hidden fees. All packages include modern 
+            design, mobile responsiveness, and ongoing support.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -84,51 +93,61 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="relative"
             >
-              <Card 
-                hover 
-                className={`h-full relative ${
-                  service.popular 
-                    ? 'border-coral-500 border-2 scale-105 shadow-2xl' 
-                    : ''
-                }`}
-              >
-                {service.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-coral-500 to-pink-500 text-white rounded-full text-sm font-semibold">
+              {service.popular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                  <Badge variant="coral" className="text-sm px-4 py-1.5 shadow-lg">
                     Most Popular
+                  </Badge>
+                </div>
+              )}
+
+              <div className={`h-full bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow ${
+                service.popular ? 'border-2 border-coral-500' : 'border border-gray-200'
+              }`}>
+                {/* Icon */}
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${
+                  service.popular 
+                    ? 'bg-gradient-to-br from-coral-500 to-pink-500' 
+                    : 'bg-gradient-to-br from-navy-600 to-navy-800'
+                }`}>
+                  <service.icon className="w-8 h-8 text-white" />
+                </div>
+
+                {/* Title & Description */}
+                <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+
+                {/* Price */}
+                <div className="mb-6">
+                  <div className="text-4xl font-bold text-navy-900 mb-1">
+                    {service.price}
                   </div>
-                )}
+                  <div className="text-sm text-gray-500">{service.priceNote}</div>
+                </div>
 
-                <CardHeader>
-                  <CardTitle>{service.name}</CardTitle>
-                  <CardDescription>{service.description}</CardDescription>
-                </CardHeader>
+                {/* Features */}
+                <ul className="space-y-3 mb-8">
+                  {service.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-coral-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                <CardContent className="space-y-6">
-                  <div>
-                    <div className="text-4xl font-bold text-navy-900">
-                      {service.price}
-                    </div>
-                    <div className="text-sm text-gray-500">One-time payment</div>
-                  </div>
-
-                  <ul className="space-y-3">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button 
+                {/* Button - NOW CLICKABLE! */}
+                <Link href={service.link} className="block">
+                  <Button
                     variant={service.popular ? 'primary' : 'outline'}
+                    size="lg"
                     className="w-full"
                   >
-                    Get Started
+                    {service.buttonText}
                   </Button>
-                </CardContent>
-              </Card>
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>
