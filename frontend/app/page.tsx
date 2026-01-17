@@ -13,6 +13,7 @@ export default function Home() {
     <>
       <Hero />
       <Services />
+      {/* Show only 3 projects on home page with "View All" button */}
       <Portfolio limit={3} showViewAll={true} />
       <About />
       <Process />

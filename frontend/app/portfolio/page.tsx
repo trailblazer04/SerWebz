@@ -19,7 +19,9 @@ export default function PortfolioPage() {
           </p>
         </div>
       </div>
-      <Portfolio showViewAll={false} />
+      {/* <Portfolio showViewAll={false} /> */}
+      {/* Show ALL projects (no limit) */}
+      <Portfolio />
       <Testimonials limit={3} />
       <Contact />
     </>
