@@ -1,8 +1,8 @@
-# 🌐 Leimarics - Crafting Digital Success
+# 🌐 Leimarics - For What's Next
 
 > Professional web development services for growing businesses. Modern, high-performing websites that drive real results.
 
-**Tagline:** *We Build, You Grow* 🚀
+**Tagline:** *Where Ambition Meets Execution* 🚀
 
 ![Leimarics](https://img.shields.io/badge/Leimarics-Crafting_Digital_Success-FF6B9D?style=for-the-badge)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
@@ -503,7 +503,7 @@ SOFTWARE.
 
 ## 📞 Contact
 
-**Leimarics** - Crafting Digital Success
+**Leimarics** - For What's Next
 
 - **Website:** [Leimarics.com](https://Leimarics.com) *(coming soon)*
 - **Email:** leofrancis6988@gmail.com
@@ -541,7 +541,7 @@ SOFTWARE.
 
 **Made with ❤️ by Leimarics**
 
-*We Build, You Grow* 🚀
+*Where Ambition Meets Execution* 🚀
 
 [⬆ Back to Top](#-Leimarics---crafting-digital-success)
 
