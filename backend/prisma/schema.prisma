@@ -3,7 +3,7 @@
 
 generator client {
   provider = "prisma-client-js" // when using default -js
-  engineType = "library"
+  engineType = "library" // can keep or remove this, it's the default anyway.
   // output   = "../src/generated/prisma" // if commented This defaults to node_modules
 }
 
