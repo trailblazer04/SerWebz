@@ -10,11 +10,15 @@ export const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
+  family: 4, // Forces IPv4. Without this, Gmail connection hangs on Render.
+  logger: true, // Log every step of the email process to console
+  debug: true   // Include SMTP traffic in logs
 })
 
 // Verify email configuration
 export async function verifyEmailConnection() {
   try {
+    console.log('Testing email connection...');
     await transporter.verify()
     console.log('✅ Email service connected successfully')
     return true
