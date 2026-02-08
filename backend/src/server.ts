@@ -14,7 +14,7 @@ import newsletterRoutes from './routes/newsletter'
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT || 3001
+app.set('trust proxy', 1); // Trust proxy of Render - Load Balancer
 
 // Middleware
 app.use(helmet())
