@@ -1,19 +1,22 @@
 // backend/src/config/email.ts
 import nodemailer from 'nodemailer'
 
-// Email configuration
-export const emailConfig = {
+// Create transporter
+// FIX: We define the config directly inside createTransport for better compatibility
+export const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  port: parseInt(process.env.SMTP_PORT || '587'),
+  port: Number(process.env.SMTP_PORT || 587),
   secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-}
-
-// Create transporter
-export const transporter = nodemailer.createTransport(emailConfig)
+  // ADDED FIX: Ensure STARTTLS is used for port 587
+  requireTLS: process.env.SMTP_SECURE !== 'true', 
+  tls: {
+    ciphers: 'SSLv3' // Helps with some Google handshake timeouts
+  }
+})
 
 // Verify email configuration
 export async function verifyEmailConnection() {
@@ -28,7 +31,7 @@ export async function verifyEmailConnection() {
   }
 }
 
-// Email templates
+// Email templates 
 export const emailTemplates = {
   contactNotification: (data: {
     name: string
